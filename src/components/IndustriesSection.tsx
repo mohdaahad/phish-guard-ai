@@ -1,0 +1,1 @@
+export default function IndustriesSection() { return <section className="py-20 px-20 bg-muted/30 max-md:px-4"><div className="max-w-[1400px] mx-auto text-center"><h2 className="font-jakarta text-[clamp(28px,4vw,48px)] font-bold">Industries We <span className="text-gradient-brand">Serve</span></h2></div></section>; }
