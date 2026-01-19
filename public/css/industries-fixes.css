@@ -1,0 +1,316 @@
+/* ============================================
+   Industries Section - Compact Bento Layout
+   ============================================ */
+
+:root {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8f9fa;
+    --brand-blue: #0197ff;
+    --accent-cyan: #0197ff;
+    /* Brand Color */
+    --accent-pink: #0197ff;
+    /* Brand Color */
+    --accent-yellow: #0197ff;
+    /* Brand Color */
+    --text-dark: #0f172a;
+    --text-gray: #64748b;
+    --border-color: #e2e8f0;
+}
+
+/* For dark mode support if the project uses .dark class */
+.dark :root {
+    --bg-primary: #0f0f23;
+    --bg-secondary: #1a1a2e;
+    --text-dark: #ffffff;
+    --text-gray: #a0a0b8;
+    --border-color: rgba(255, 255, 255, 0.1);
+}
+
+.industries-section {
+    position: relative;
+    padding: 80px;
+    /* Matched to SolutionsSection */
+    overflow: hidden;
+    background: var(--bg-primary);
+    color: var(--text-dark);
+    transition: background 0.5s ease, color 0.5s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .industries-section {
+        padding: 60px 16px;
+    }
+}
+
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .industries-section {
+        padding: 70px 40px;
+    }
+}
+
+/* Animated background */
+.bg-animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    opacity: 0.05;
+    pointer-events: none;
+}
+
+.bg-circle {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    width: 300px;
+    height: 300px;
+    background: var(--brand-blue);
+    top: -150px;
+    left: -150px;
+}
+
+.sol9x-industries-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 60px;
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+/* Header Section - Matched to SolutionsSection */
+.sol9x-industries-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    text-align: center;
+
+}
+
+.sol9x-industries-header .eyebrow {
+    font-family: var(--font-jakarta);
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--brand-blue);
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.sol9x-industries-title {
+    font-family: var(--font-jakarta);
+    font-size: clamp(28px, 4vw, 48px);
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -0.5px;
+    text-align: center;
+    color: #1a1a1a;
+    margin: 0;
+}
+
+.sol9x-industries-title-highlight {
+    position: relative;
+    background: linear-gradient(135deg, #0197ff 0%, #00d4ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 800;
+}
+
+.subtitle {
+    font-family: var(--font-dm-sans);
+    font-size: 1rem;
+    /* Smaller subtitle */
+    color: var(--text-gray);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* Industries Grid - Bento Box Style */
+.industries-bento-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 1.25rem;
+    /* Reduced gap */
+}
+
+.industry-item {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    /* Thinner border */
+    border-radius: 20px;
+    /* Slightly smaller radius */
+    padding: 2rem;
+    /* Reduced padding */
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+    text-decoration: none;
+    display: block;
+}
+
+.industry-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--accent-color) 0%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.industry-item:hover::before {
+    opacity: 0.06;
+}
+
+.industry-item:hover {
+    transform: translateY(-6px);
+    border-color: var(--accent-color);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+}
+
+/* Grid positioning */
+.industry-item.span-6 {
+    grid-column: span 6;
+}
+
+.industry-item.span-4 {
+    grid-column: span 4;
+}
+
+.industry-content-wrap {
+    position: relative;
+    z-index: 1;
+}
+
+.industry-number {
+    font-family: var(--font-dm-sans);
+    font-size: 0.7rem;
+    color: var(--accent-color);
+    margin-bottom: 1.25rem;
+    letter-spacing: 0.1em;
+    font-weight: 700;
+}
+
+.industry-icon-box {
+    width: 50px;
+    /* Smaller icon box */
+    height: 50px;
+    background: var(--accent-color);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+    transition: all 0.4s ease;
+}
+
+.industry-item:hover .industry-icon-box {
+    transform: rotate(8deg) scale(1.05);
+}
+
+.industry-icon-box svg {
+    width: 24px;
+    /* Smaller icon */
+    height: 24px;
+    stroke: white;
+    fill: none;
+    stroke-width: 2;
+}
+
+.industry-title-text {
+    font-family: var(--font-jakarta);
+    font-size: 1.5rem;
+    /* Smaller title */
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--text-dark);
+}
+
+.industry-desc-text {
+    font-family: var(--font-dm-sans);
+    font-size: 0.9375rem;
+    /* Smaller description */
+    color: var(--text-gray);
+    line-height: 1.5;
+    margin-bottom: 1.25rem;
+}
+
+.industry-action-link {
+    font-family: var(--font-dm-sans);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.8125rem;
+    color: var(--accent-color);
+    text-decoration: none;
+    opacity: 0;
+    transform: translateX(-8px);
+    transition: all 0.4s ease;
+    font-weight: 700;
+}
+
+.industry-item:hover .industry-action-link {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.industry-action-link::after {
+    content: '→';
+    transition: transform 0.3s ease;
+}
+
+/* Tablet Layout */
+@media (max-width: 1024px) {
+
+    .industry-item.span-6,
+    .industry-item.span-4 {
+        grid-column: span 12;
+    }
+
+    .industry-item:nth-child(3),
+    .industry-item:nth-child(4),
+    .industry-item:nth-child(5) {
+        grid-column: span 6;
+    }
+}
+
+/* Mobile Layout */
+@media (max-width: 640px) {    .industries-bento-grid {
+        gap: 1rem;
+    }
+
+    .industry-item {
+        grid-column: span 12 !important;
+        padding: 1.5rem;
+    }
+
+    .industry-title-text {
+        font-size: 1.25rem;
+    }
+
+    .industry-desc-text {
+        font-size: 0.875rem;
+    }
+
+    .industry-action-link {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}

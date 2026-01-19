@@ -1,0 +1,3604 @@
+/* ============================================
+   Defence Page Specific Styles
+   ============================================ */
+
+
+/* --------------------------------------------
+   Design System (root) — typography tokens
+   Define heading sizes (ds = design system) here so
+   h1/h2/h3 sizes are centralized for the defence page.
+   NOTE: `h1` should only be used in the hero section.
+---------------------------------------------*/
+
+:root {
+  --ds-font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --ds-h1: 48px;
+  /* Hero title */
+  --ds-h2: 28px;
+  /* Section headings */
+  --ds-h3: 16px;
+  /* Normal paragraph text */
+  --ds-line-height-title: 1.08;
+  --ds-line-height-heading: 1.25;
+  --ds-line-height-body: 1.6;
+  --ds-font-weight-regular: 400;
+  --ds-font-weight-bold: 700;
+}
+
+/* Global base font-family for the page (can be overridden) */
+body {
+  font-family: var(--ds-font-family);
+}
+
+/* Map semantic HTML to DS tokens */
+h1 {
+  font-size: var(--ds-h1);
+  line-height: var(--ds-line-height-title);
+  font-weight: var(--ds-font-weight-bold);
+  margin: 0;
+}
+
+h2 {
+  font-size: var(--ds-h2);
+  line-height: var(--ds-line-height-heading);
+  font-weight: var(--ds-font-weight-bold);
+  margin: 0;
+}
+
+h3 {
+  font-size: var(--ds-h3);
+  line-height: var(--ds-line-height-body);
+  font-weight: var(--ds-font-weight-regular);
+  margin: 0;
+}
+
+/* Utility classes to be used across components */
+.hero-title {
+  font-size: var(--ds-h1);
+  line-height: var(--ds-line-height-title);
+  font-weight: var(--ds-font-weight-bold);
+}
+
+.section-heading {
+  font-size: var(--ds-h2);
+  line-height: var(--ds-line-height-heading);
+  font-weight: var(--ds-font-weight-bold);
+}
+
+.normal-text,
+p {
+  font-size: var(--ds-h3);
+  line-height: var(--ds-line-height-body);
+}
+
+
+/* ============================================
+   Defence CTA Section
+   ============================================ */
+
+.defence-cta-section {
+  position: relative;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 80px;
+
+}
+
+.defence-cta-background {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(180deg, #fdfcfc 0%, #f8f9fa 100%);
+}
+
+.defence-cta-background-blur {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  backdrop-filter: none;
+}
+
+.defence-cta-container {
+  position: relative;
+  z-index: 10;
+  max-width: 680px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+  backdrop-filter: blur(20px);
+}
+
+.defence-cta-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  text-align: center;
+}
+
+.defence-cta-title {
+  font-family: var(--font-jakarta);
+  font-size: clamp(32px, 5vw, 56px);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -1.5px;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.defence-cta-title-highlight {
+  background: linear-gradient(135deg, #0197ff 0%, #00d4ff 50%, #0197ff 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: defence-cta-gradient 3s ease infinite;
+}
+
+@keyframes defence-cta-gradient {
+
+  0%,
+  100% {
+    background-position: 0% center;
+  }
+
+  50% {
+    background-position: 100% center;
+  }
+}
+
+.defence-cta-description {
+  font-family: var(--font-dm-sans);
+  font-size: 16px;
+  line-height: 1.75;
+  color: #5f6c7b;
+  max-width: 680px;
+  margin: 0;
+}
+
+.defence-cta-buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.defence-cta-btn-primary,
+.defence-cta-btn-secondary {
+  font-family: var(--font-jakarta);
+  font-size: 16px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 32px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  border: none;
+}
+
+.defence-cta-btn-primary {
+  background: linear-gradient(135deg, #0197ff 0%, #0177cc 100%);
+  color: #ffffff;
+  box-shadow:
+    0 4px 16px rgba(1, 151, 255, 0.3),
+    0 0 0 0 rgba(1, 151, 255, 0.4);
+}
+
+.defence-cta-btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s;
+}
+
+.defence-cta-btn-primary:hover::before {
+  left: 100%;
+}
+
+.defence-cta-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 8px 24px rgba(1, 151, 255, 0.4),
+    0 0 0 4px rgba(1, 151, 255, 0.2);
+}
+
+.defence-cta-btn-primary:active {
+  transform: translateY(0);
+}
+
+.defence-cta-btn-secondary {
+  background: #ffffff;
+  color: #0197ff;
+  border: 2px solid #0197ff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.defence-cta-btn-secondary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: #0197ff;
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: -1;
+}
+
+.defence-cta-btn-secondary:hover {
+  /* color: #ffffff; */
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(1, 151, 255, 0.3);
+}
+
+.defence-cta-btn-secondary:active {
+  transform: translateY(0);
+}
+
+.defence-cta-btn-text {
+  position: relative;
+  z-index: 1;
+  font-weight: 600;
+}
+
+.defence-cta-btn-icon {
+  position: relative;
+  z-index: 1;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.defence-cta-btn-primary:hover .defence-cta-btn-icon,
+.defence-cta-btn-secondary:hover .defence-cta-btn-icon {
+  transform: translateX(4px);
+}
+
+/* Responsive Styles for Defence CTA Section */
+@media (max-width: 1024px) {
+  .defence-cta-section {
+    padding: 80px 40px;
+    min-height: 50vh;
+  }
+
+  .defence-cta-container {
+    gap: 40px;
+  }
+
+  .defence-cta-title {
+    font-size: 40px;
+  }
+
+  .defence-cta-description {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .defence-cta-section {
+    padding: 40px 16px;
+    min-height: auto;
+  }
+
+  .defence-cta-container {
+    padding: 0px;
+    gap: 32px;
+  }
+
+  .defence-cta-title {
+    font-size: 28px;
+    letter-spacing: -0.5px;
+  }
+
+  .defence-cta-description {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .defence-cta-buttons {
+    flex-direction: column;
+    width: 100%;
+    gap: 16px;
+  }
+
+  .defence-cta-btn-primary,
+  .defence-cta-btn-secondary {
+    width: 100%;
+    justify-content: center;
+    padding: 14px 24px;
+    font-size: 15px;
+  }
+}
+
+/* ============================================
+   Defence Page Specific Styles
+   ============================================ */
+
+
+
+
+
+/* Defence Products Section */
+.defence-products-section {
+  width: 100%;
+  padding: 100px 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 64px;
+  background: #ffffff;
+}
+
+.defence-products-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 64px;
+  width: 100%;
+  max-width: 1440px;
+}
+
+.defence-products-title {
+  font-family: var(--font-jakarta);
+  font-size: 44px;
+  font-weight: 700;
+  line-height: 120%;
+  letter-spacing: 0.88px;
+  text-align: center;
+  color: #000000;
+  margin: 0;
+}
+
+.defence-products-title-highlight {
+  position: relative;
+  background: linear-gradient(135deg, #0197ff 0%, #00d4ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 800;
+}
+
+.defence-products-grid {
+  display: flex;
+  align-items: stretch;
+  gap: 32px;
+  width: 100%;
+}
+
+.defence-products-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  border-radius: 24px;
+  border: 1px solid #E5E5E5;
+  background: #ffffff;
+  transition: box-shadow 0.3s, transform 0.3s;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  padding: 20px;
+  gap: 20px;
+}
+
+.defence-products-card:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  transform: translateY(-2px);
+}
+
+.defence-products-image {
+  width: 100%;
+  height: 280px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  flex-shrink: 0;
+  border-radius: 16px;
+  margin: 0;
+}
+
+.defence-products-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+  position: relative;
+}
+
+.defence-products-card-title {
+  font-family: var(--font-jakarta);
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 28px;
+  color: #000000;
+  margin: 0;
+}
+
+.defence-products-card-description {
+  font-family: var(--font-dm-sans);
+  font-size: 16px;
+  line-height: 160%;
+  color: #5F6C7B;
+  margin: 0;
+  flex: 1;
+}
+
+.defence-products-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  margin-top: auto;
+  padding: 0;
+  align-self: flex-end;
+  transition: gap 0.2s;
+}
+
+.defence-products-cta:hover {
+  gap: 6px;
+}
+
+.defence-products-cta span {
+  font-family: var(--font-jakarta);
+  font-size: 16px;
+  font-weight: 600;
+  color: #0197FF;
+  line-height: 1;
+}
+
+.defence-products-cta-arrow {
+  font-size: 18px;
+  color: #0197FF;
+  line-height: 1;
+  display: inline-block;
+  transition: transform 0.2s;
+}
+
+.defence-products-cta:hover .defence-products-cta-arrow {
+  transform: translateX(2px);
+}
+
+/* Responsive Styles for Defence Products Section */
+@media (max-width: 1024px) {
+  .defence-products-section {
+    padding: 80px 40px;
+    gap: 48px;
+  }
+
+  .defence-products-container {
+    gap: 48px;
+  }
+
+  .defence-products-title {
+    font-size: 36px;
+  }
+
+  .defence-products-grid {
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .defence-products-image {
+    height: 320px;
+  }
+}
+
+@media (max-width: 768px) {
+  .defence-products-section {
+    padding: 40px 16px;
+    gap: 28px;
+  }
+
+  .defence-products-container {
+    gap: 28px;
+  }
+
+  .defence-products-title {
+    font-size: 28px;
+    line-height: 1.3;
+  }
+
+  .defence-products-grid {
+    flex-direction: row;
+    scroll-snap-type: x mandatory;
+    gap: 16px;
+    width: 100%;
+    margin: 0;
+    padding: 0 0 16px 0;
+    /* Hide scrollbar */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .defence-products-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .defence-products-card {
+    flex: 0 0 calc(100% - 32px);
+    scroll-snap-align: center;
+    border-radius: 16px;
+    padding: 0;
+    gap: 16px;
+    background: #ffffff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .defence-products-image {
+    height: 200px;
+    border-radius: 16px 16px 0 0;
+  }
+
+  .defence-products-content {
+    padding: 16px;
+  }
+
+  .defence-products-card-title {
+    font-size: 18px;
+    line-height: 1.4;
+  }
+
+  .defence-products-card-description {
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
+
+  /* Carousel Indicators */
+  .defence-products-carousel-indicators {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+  }
+
+  .defence-products-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #e5e5e5;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .defence-products-dot.active {
+    background-color: #0197ff;
+    width: 24px;
+    border-radius: 4px;
+  }
+}
+
+/* Defence Software Capabilities Section */
+.defence-software-capabilities-section {
+  width: 100%;
+  padding: 80px 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 60px;
+  background: #fdfcfc;
+}
+
+.defence-software-capabilities-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 60px;
+  width: 100%;
+  max-width: 1440px;
+}
+
+.defence-software-capabilities-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+  max-width: 800px;
+}
+
+.defence-software-capabilities-title {
+  font-family: var(--font-jakarta);
+  font-size: 44px;
+  font-weight: 700;
+  line-height: 120%;
+  letter-spacing: 0.88px;
+  color: #000000;
+}
+
+.defence-software-capabilities-title-highlight {
+  position: relative;
+  background: linear-gradient(135deg, #0197ff 0%, #00d4ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 800;
+}
+
+.defence-software-capabilities-subtitle {
+  font-family: var(--font-dm-sans);
+  font-size: 16px;
+  line-height: 150%;
+  color: #5F6C7B;
+}
+
+.defence-software-capabilities-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  width: 100%;
+}
+
+.defence-software-capabilities-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 32px 24px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(1, 151, 255, 0.1);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.defence-software-capabilities-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(1, 151, 255, 0.05) 0%, rgba(0, 212, 255, 0.02) 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 0;
+}
+
+.defence-software-capabilities-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(1, 151, 255, 0.15);
+  border-color: rgba(1, 151, 255, 0.3);
+}
+
+.defence-software-capabilities-card:hover::before {
+  opacity: 1;
+}
+
+.defence-software-capabilities-icon-wrapper {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  width: 72px;
+  height: 72px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(1, 151, 255, 0.1) 0%, rgba(0, 212, 255, 0.05) 100%);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.defence-software-capabilities-card:hover .defence-software-capabilities-icon-wrapper {
+  transform: scale(1.1) rotate(5deg);
+  background: linear-gradient(135deg, #0197ff 0%, #00d4ff 100%);
+  box-shadow: 0 8px 24px rgba(1, 151, 255, 0.3);
+}
+
+.defence-software-capabilities-icon-wrapper svg {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.defence-software-capabilities-card:hover .defence-software-capabilities-icon-wrapper svg {
+  filter: brightness(0) invert(1);
+}
+
+.defence-software-capabilities-card-title {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-jakarta);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #1a1a1a;
+  margin: 0;
+  transition: color 0.3s ease;
+}
+
+.defence-software-capabilities-card:hover .defence-software-capabilities-card-title {
+  color: #0197ff;
+}
+
+.defence-software-capabilities-card-description {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-dm-sans);
+  font-size: 14px;
+  line-height: 1.6;
+  color: #5F6C7B;
+  margin: 0;
+}
+
+.defence-software-view-all-wrapper {
+  display: none;
+  width: 100%;
+  justify-content: center;
+  margin-top: 24px;
+}
+
+.defence-software-capabilities-view-all-btn {
+  font-family: var(--font-jakarta);
+  font-size: 16px;
+  font-weight: 600;
+  color: #0197FF;
+  background: transparent;
+  border: 1px solid #0197FF;
+  padding: 10px 24px;
+  border-radius: 24px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.defence-software-capabilities-view-all-btn:hover {
+  background: #0197FF;
+  color: #ffffff;
+}
+
+/* Responsive Styles for Software Capabilities Section */
+@media (max-width: 1024px) {
+  .defence-software-capabilities-section {
+    padding: 80px 40px;
+    gap: 48px;
+  }
+
+  .defence-software-capabilities-container {
+    gap: 48px;
+  }
+
+  .defence-software-capabilities-title {
+    font-size: 36px;
+  }
+
+  .defence-software-capabilities-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .defence-software-capabilities-section {
+    padding: 40px 16px;
+    gap: 40px;
+  }
+
+  .defence-software-capabilities-container {
+    gap: 32px;
+  }
+
+  .defence-software-capabilities-title {
+    font-size: 28px;
+  }
+
+  .defence-software-capabilities-subtitle {
+    display: none;
+  }
+
+  .defence-software-capabilities-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  /* Initially show only first 4 items */
+  .defence-software-capabilities-grid:not(.expanded) .defence-software-capabilities-card:nth-child(n+5) {
+    display: none;
+  }
+
+  /* Show View All button on mobile */
+  .defence-software-view-all-wrapper {
+    display: flex;
+  }
+
+  .defence-software-capabilities-card {
+    padding: 16px;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .defence-software-capabilities-icon-wrapper {
+    width: 48px;
+    height: 48px;
+  }
+
+  .defence-software-capabilities-card-title {
+    font-size: 14px;
+    line-height: 1.3;
+    text-align: center;
+  }
+
+  .defence-software-capabilities-card-description {
+    font-size: 16px;
+    line-height: 1.4;
+    display: none;
+  }
+}
+
+/* Defence Hardware Systems Section */
+.defence-hardware-systems-section {
+  width: 100%;
+  padding: 80px 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 60px;
+  background: #F2FAFF;
+  position: relative;
+  z-index: 5;
+}
+
+.defence-hardware-systems-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 60px;
+  width: 100%;
+  max-width: 1440px;
+}
+
+.defence-hardware-systems-title {
+  font-family: var(--font-jakarta);
+  font-size: 44px;
+  font-weight: 700;
+  line-height: 120%;
+  letter-spacing: 0.88px;
+  text-align: center;
+  color: #000000;
+}
+
+.defence-hardware-systems-title-highlight {
+  position: relative;
+  background: linear-gradient(135deg, #0197ff 0%, #00d4ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 800;
+}
+
+.defence-hardware-systems-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  width: 100%;
+}
+
+.defence-hardware-systems-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 32px 24px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(1, 151, 255, 0.1);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.defence-hardware-systems-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(1, 151, 255, 0.05) 0%, rgba(0, 212, 255, 0.02) 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 0;
+}
+
+.defence-hardware-systems-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(1, 151, 255, 0.15);
+  border-color: rgba(1, 151, 255, 0.3);
+}
+
+.defence-hardware-systems-card:hover::before {
+  opacity: 1;
+}
+
+.defence-hardware-systems-icon-wrapper {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  width: 72px;
+  height: 72px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(1, 151, 255, 0.1) 0%, rgba(0, 212, 255, 0.05) 100%);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.defence-hardware-systems-card:hover .defence-hardware-systems-icon-wrapper {
+  transform: scale(1.1) rotate(5deg);
+  background: linear-gradient(135deg, #0197ff 0%, #00d4ff 100%);
+  box-shadow: 0 8px 24px rgba(1, 151, 255, 0.3);
+}
+
+.defence-hardware-systems-icon-wrapper svg {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.defence-hardware-systems-card:hover .defence-hardware-systems-icon-wrapper svg {
+  filter: brightness(0) invert(1);
+}
+
+.defence-hardware-systems-card-title {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-jakarta);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #1a1a1a;
+  margin: 0;
+  transition: color 0.3s ease;
+}
+
+.defence-hardware-systems-card:hover .defence-hardware-systems-card-title {
+  color: #0197ff;
+}
+
+.defence-hardware-systems-card-description {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-dm-sans);
+  font-size: 14px;
+  line-height: 1.6;
+  color: #5F6C7B;
+  margin: 0;
+}
+
+.defence-hardware-view-all-wrapper {
+  display: none;
+  width: 100%;
+  justify-content: center;
+  margin-top: 24px;
+}
+
+.defence-hardware-systems-view-all-btn {
+  font-family: var(--font-jakarta);
+  font-size: 16px;
+  font-weight: 600;
+  color: #0197FF;
+  background: transparent;
+  border: 1px solid #0197FF;
+  padding: 10px 24px;
+  border-radius: 24px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.defence-hardware-systems-view-all-btn:hover {
+  background: #0197FF;
+  color: #ffffff;
+}
+
+/* Responsive Styles for Hardware Systems Section */
+@media (max-width: 1024px) {
+  .defence-hardware-systems-section {
+    padding: 80px 40px;
+    gap: 48px;
+  }
+
+  .defence-hardware-systems-container {
+    gap: 48px;
+  }
+
+  .defence-hardware-systems-title {
+    font-size: 36px;
+  }
+
+  .defence-hardware-systems-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .defence-hardware-systems-section {
+    padding: 40px 16px;
+    gap: 40px;
+    /* Ensure it doesn't get overlapped */
+    position: relative;
+    z-index: 10;
+  }
+
+  .defence-hardware-systems-container {
+    gap: 32px;
+  }
+
+  .defence-hardware-systems-title {
+    font-size: 28px;
+  }
+
+  .defence-hardware-systems-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  /* Initially show only first 4 items */
+  .defence-hardware-systems-grid:not(.expanded) .defence-hardware-systems-card:nth-child(n+5) {
+    display: none;
+  }
+
+  /* Show View All button on mobile */
+  .defence-hardware-view-all-wrapper {
+    display: flex;
+  }
+
+  .defence-hardware-systems-card {
+    padding: 16px;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .defence-hardware-systems-icon-wrapper {
+    width: 48px;
+    height: 48px;
+  }
+
+  .defence-hardware-systems-card-title {
+    font-size: 14px;
+    line-height: 1.3;
+    text-align: center;
+  }
+
+  .defence-hardware-systems-card-description {
+    font-size: 16px;
+    line-height: 1.4;
+    display: none;
+  }
+}
+
+/* Research & Development Section Styles */
+.sol9x-research-section {
+  padding: 80px 0;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.sol9x-research-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.sol9x-research-header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.sol9x-research-title {
+  font-family: var(--font-sans);
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: #000000;
+}
+
+.sol9x-research-title-highlight {
+  color: #0197ff;
+}
+
+.sol9x-research-subtitle {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.6;
+  color: #5f6c7b;
+  max-width: 672px;
+  margin: 0 auto;
+}
+
+.sol9x-research-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 24px;
+}
+
+.sol9x-research-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 24px;
+  padding: 40px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(1, 151, 255, 0.1);
+  background: linear-gradient(135deg, rgba(191, 231, 255, 0.3) 0%, rgba(255, 255, 255, 0.9) 100%);
+  min-height: 320px;
+}
+
+.sol9x-research-card:hover {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  transform: translateY(-2px);
+}
+
+.sol9x-research-card-wide {
+  grid-column: span 7;
+}
+
+.sol9x-research-card-narrow {
+  grid-column: span 5;
+}
+
+.sol9x-research-card-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+  z-index: 10;
+  max-width: 320px;
+}
+
+.sol9x-research-card-title {
+  font-family: var(--font-sans);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #000000;
+  margin-bottom: 16px;
+  line-height: 1.3;
+  transition: color 0.3s;
+}
+
+.sol9x-research-card:hover .sol9x-research-card-title {
+  color: #0197ff;
+}
+
+.sol9x-research-card-description {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.6;
+  color: #5f6c7b;
+}
+
+.sol9x-research-card-image {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 60%;
+  height: 80%;
+  pointer-events: none;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sol9x-research-card:hover .sol9x-research-card-image {
+  transform: scale(1.05);
+}
+
+.sol9x-research-card-image img {
+  object-fit: contain;
+  object-position: right bottom;
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.15));
+}
+
+/* Enhanced styling for the sea vessels card with full background image */
+.sol9x-research-card-fullbg {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  padding: 48px;
+}
+
+/* Overlay to ensure text readability over the ship background */
+.sol9x-research-card-fullbg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right,
+      rgba(191, 231, 255, 0.85) 0%,
+      rgba(191, 231, 255, 0.75) 40%,
+      rgba(191, 231, 255, 0.3) 70%,
+      transparent 100%);
+  z-index: 1;
+  border-radius: 24px;
+}
+
+.sol9x-research-card-fullbg .sol9x-research-card-content {
+  z-index: 10;
+  position: relative;
+}
+
+/* Make text more prominent on full background cards */
+.sol9x-research-card-fullbg .sol9x-research-card-title {
+  color: #000000;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
+}
+
+.sol9x-research-card-fullbg .sol9x-research-card-description {
+  color: #1f2937;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
+}
+
+/* Why Choose Us Section Styles */
+.sol9x-why-choose-section {
+  padding: 80px 0;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.sol9x-why-choose-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.sol9x-why-choose-title {
+  font-family: var(--font-jakarta);
+  font-size: 3rem;
+  font-weight: 700;
+  text-align: center;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: #000000;
+}
+
+.sol9x-why-choose-title-highlight {
+  color: #0197ff;
+}
+
+.sol9x-why-choose-grid {
+  display: grid;
+  /* Updated to 3 columns to allow for the tall card + 2x2 layout */
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  grid-auto-rows: minmax(320px, auto);
+}
+
+.sol9x-why-choose-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 24px;
+  padding: 40px 32px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(1, 151, 255, 0.1);
+  background: linear-gradient(135deg, rgba(191, 231, 255, 0.3) 0%, rgba(230, 245, 255, 0.6) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.sol9x-why-choose-card:hover {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  transform: translateY(-4px);
+}
+
+/* Updated grid spans to match the Figma design (tall card on left, 2x2 on right) */
+/* First card (Security) sits on the left and spans two rows */
+.sol9x-why-choose-card:nth-child(1) {
+  grid-column: span 1;
+  grid-row: span 2;
+}
+
+/* Cards 2-5 take one slot each in the 2nd and 3rd columns */
+.sol9x-why-choose-card:nth-child(2),
+.sol9x-why-choose-card:nth-child(3),
+.sol9x-why-choose-card:nth-child(4),
+.sol9x-why-choose-card:nth-child(5) {
+  grid-column: span 1;
+  grid-row: span 1;
+}
+
+.sol9x-why-choose-card-content {
+  flex: 0 0 auto;
+  z-index: 10;
+  position: relative;
+}
+
+.sol9x-why-choose-card-title {
+  font-family: var(--font-sans);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #000000;
+  margin-bottom: 16px;
+  line-height: 1.3;
+  transition: color 0.3s;
+}
+
+.sol9x-why-choose-card:hover .sol9x-why-choose-card-title {
+  color: #0197ff;
+}
+
+.sol9x-why-choose-card-description {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.6;
+  color: #5f6c7b;
+  margin-bottom: 32px;
+}
+
+.sol9x-why-choose-card-image-wrapper {
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: center;
+  min-height: 240px;
+  position: relative;
+  z-index: 5;
+}
+
+.sol9x-why-choose-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center bottom;
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.12));
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  max-height: 280px;
+}
+
+.sol9x-why-choose-card:hover .sol9x-why-choose-card-image {
+  transform: scale(1.05) translateY(-8px);
+}
+
+/* Per-image sizing overrides so each card image can have a custom size */
+.sol9x-why-choose-card-large .sol9x-why-choose-image-national {
+  /* width: auto !important; */
+  /* height: auto !important; */
+  max-width: 500px !important;
+  max-height: 500px !important;
+  -o-object-fit: cover !important;
+  /* object-fit: cover !important; */
+  -o-object-position: right center !important;
+  object-position: right center !important;
+}
+
+.sol9x-why-choose-card-small .sol9x-why-choose-image-highstake {
+  /* width: 160px !important; */
+  /* height: 160px !important; */
+  max-width: 220px !important;
+  max-height: 260px !important;
+  /* object-fit: contain !important; */
+}
+
+.sol9x-why-choose-card-small .sol9x-why-choose-image-outcome {
+  /* width: 160px !important; */
+  /* height: 160px !important; */
+  max-width: 230px !important;
+  max-height: 270px !important;
+  object-fit: contain !important;
+}
+
+.sol9x-why-choose-card-small .sol9x-why-choose-image-global {
+  /* width: 140px !important; */
+  /* height: 400px !important; */
+  max-width: 460px !important;
+  max-height: 460px !important;
+  object-fit: contain !important;
+}
+
+.sol9x-why-choose-card-small .sol9x-why-choose-image-security {
+  /* width: 160px !important; */
+  /* height: 160px !important; */
+  max-width: 200px !important;
+  max-height: 190px !important;
+  object-fit: contain !important;
+}
+
+/* Mobile-specific adjustments for the why-choose images */
+
+
+
+/* Adjusted image heights to better fit the smaller square cards */
+.sol9x-why-choose-card:nth-child(1) .sol9x-why-choose-card-image {
+  max-height: 580px;
+}
+
+.sol9x-why-choose-card:not(:first-child) .sol9x-why-choose-card-image {
+  max-height: 220px;
+}
+
+
+
+/* Contact Page Styles */
+.sol9x-contact-section {
+  padding: 80px 0;
+  background: #ffffff;
+  position: relative;
+  overflow: hidden;
+  min-height: calc(100vh - 80px);
+}
+
+.sol9x-contact-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 16px;
+  position: relative;
+  z-index: 10;
+}
+
+.sol9x-contact-header {
+  /* Updated to flex to allow accent bar to span both title and subtitle */
+  display: flex;
+  align-items: stretch;
+  gap: 24px;
+  margin-bottom: 64px;
+}
+
+.sol9x-contact-title-wrapper {
+  /* Removed as it's no longer needed with the new header structure */
+  display: contents;
+}
+
+.sol9x-contact-accent-bar {
+  width: 6px;
+  /* Removed fixed height to let it stretch based on parent */
+  background-color: #0197ff;
+}
+
+.sol9x-contact-title {
+  font-family: var(--font-sans);
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: #000000;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.sol9x-contact-title-highlight {
+  position: relative;
+  color: #0197ff;
+  /* Set to block to force "remarkable" to the second line */
+  display: block;
+  margin-top: 8px;
+}
+
+.sol9x-contact-wavy-underline {
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 50%;
+  height: 12px;
+  background-image: url("data:image/svg+xml,%3Csvg width='200' height='12' viewBox='0 0 200 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 10C25 10 25 2 50 2C75 2 75 10 100 10C125 10 125 2 150 2C175 2 175 10 200 10' stroke='%230197ff' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-size: 100px 12px;
+}
+
+.sol9x-contact-subtitle {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  color: #5f6c7b;
+  /* Removed margin-left as it's handled by the parent flex gap */
+  margin-top: 16px;
+}
+
+.sol9x-contact-form {
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.sol9x-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sol9x-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+.sol9x-form-label {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 600;
+  color: #000000;
+}
+
+.sol9x-form-input,
+.sol9x-form-textarea {
+  width: 100%;
+  padding: 16px 24px;
+  border-radius: 12px;
+  border: 1px solid #B3B3B3;
+  background-color: #ffffff;
+  color: #000000;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  transition: all 0.3s;
+  outline: none;
+}
+
+.sol9x-form-input:focus,
+.sol9x-form-textarea:focus {
+  border-color: #0197ff;
+  box-shadow: 0 0 0 4px rgba(1, 151, 255, 0.1);
+}
+
+.sol9x-form-textarea {
+  min-height: 200px;
+  resize: vertical;
+}
+
+.sol9x-form-submit-wrapper {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.sol9x-btn-submit {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 32px;
+  background-color: #0197ff;
+  color: #ffffff;
+  border-radius: 30px;
+  font-family: var(--font-sans);
+  font-size: 1.125rem;
+  font-weight: 600;
+  transition: all 0.3s;
+  border: none;
+  cursor: pointer;
+}
+
+.sol9x-btn-submit:hover {
+  background-color: #0077cc;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(1, 151, 255, 0.2);
+}
+
+.sol9x-btn-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.sol9x-btn-submit:disabled:hover {
+  background-color: #0197ff;
+  transform: none;
+  box-shadow: none;
+}
+
+.sol9x-form-error {
+  padding: 16px 24px;
+  background-color: #fde8e8;
+  border: 1px solid #f87171;
+  border-radius: 12px;
+  color: #000000;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: -16px;
+}
+
+.sol9x-form-success {
+  padding: 16px 24px;
+  background-color: #dcfce7;
+  border: 1px solid #86efac;
+  border-radius: 12px;
+  color: #000000;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 500;
+  margin-top: -16px;
+}
+
+.sol9x-contact-content-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+.sol9x-contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.sol9x-contact-info-title {
+  font-family: var(--font-sans);
+  font-size: 2rem;
+  font-weight: 700;
+  color: #000000;
+  margin: 0;
+}
+
+.sol9x-contact-info-items {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.sol9x-contact-info-item {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.sol9x-contact-info-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background-color: #f0f9ff;
+  color: #0197ff;
+  flex-shrink: 0;
+}
+
+.sol9x-contact-info-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.sol9x-contact-info-label {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 600;
+  color: #000000;
+  margin: 0;
+}
+
+.sol9x-contact-info-text {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  color: #5f6c7b;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.sol9x-contact-info-link {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  color: #0197ff;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.sol9x-contact-info-link:hover {
+  color: #0077cc;
+  text-decoration: underline;
+}
+
+.sol9x-contact-background-map {
+  position: absolute;
+  right: -100px;
+  bottom: -50px;
+  width: 600px;
+  height: 600px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.sol9x-contact-map-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Contact Page Responsive Styles */
+@media (max-width: 768px) {
+  .sol9x-contact-content-wrapper {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .sol9x-contact-info-title {
+    font-size: 1.75rem;
+  }
+
+  .sol9x-contact-info-item {
+    gap: 16px;
+  }
+
+  .sol9x-contact-info-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .sol9x-contact-info-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+
+/* ============================================
+   Mobile Responsive Styles (max-width: 768px)
+   ============================================ */
+
+
+/* ============================================
+   Mobile Responsive Styles (max-width: 480px)
+   ============================================ */
+
+
+/* Ensure page content is offset below the fixed header so elements
+   don't get hidden behind it. This uses the global header height
+   and accounts for device safe-area insets. */
+main {
+  padding-top: calc(var(--header-height) + env(safe-area-inset-top, 0));
+}
+
+/* Defence Hero Section Mobile Styles */
+@media (max-width: 768px) {
+  .sol9x-hero {
+    min-height: 80vh;
+  }
+}
+
+/* Adding mobile-responsive styles for defence page sections */
+
+
+
+/* ============================================
+   Defence FAQ Section
+   ============================================ */
+
+.defence-faq-section {
+  width: 100%;
+  padding: 80px;
+  background: linear-gradient(180deg, #fdfcfc 0%, #ffffff 50%, #fdfcfc 100%);
+}
+
+.defence-faq-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 80px;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.defence-faq-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.defence-faq-title {
+  font-family: var(--font-jakarta);
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.5px;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.defence-faq-title-highlight {
+  background: linear-gradient(135deg, #0197ff 0%, #00d4ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 800;
+}
+
+.defence-faq-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.defence-faq-contact-text {
+  font-family: var(--font-dm-sans);
+  font-size: 16px;
+  color: #5f6c7b;
+  margin: 0;
+}
+
+.defence-faq-contact-link {
+  font-family: var(--font-jakarta);
+  font-size: 16px;
+  font-weight: 600;
+  color: #0197ff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.defence-faq-contact-link:hover {
+  text-decoration: underline;
+}
+
+.defence-faq-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.defence-faq-question-wrapper {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 24px 0;
+  cursor: pointer;
+}
+
+.defence-faq-question-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.defence-faq-question {
+  font-family: var(--font-jakarta);
+  font-size: 20px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.defence-faq-answer {
+  font-family: var(--font-dm-sans);
+  font-size: 16px;
+  line-height: 1.6;
+  color: #5f6c7b;
+  margin: 0;
+}
+
+.defence-faq-icon {
+  flex-shrink: 0;
+}
+
+.defence-faq-divider {
+  height: 1px;
+  background: rgba(1, 151, 255, 0.1);
+}
+
+.defence-faq-item {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ============================================
+   Defence Insights Section
+   ============================================ */
+
+.defence-insights-section {
+  width: 100%;
+  padding: 80px;
+  background: linear-gradient(180deg, #ffffff 0%, #fdfcfc 50%, #ffffff 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.defence-insights-announcement {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.defence-insights-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 60px;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.defence-insights-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  width: 100%;
+}
+
+.defence-insights-title {
+  font-family: var(--font-jakarta);
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.5px;
+  text-align: center;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.defence-insights-title-highlight {
+  background: linear-gradient(135deg, #0197ff 0%, #00d4ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 800;
+}
+
+.defence-insights-grid {
+  width: 100%;
+  overflow: hidden;
+}
+
+.defence-insights-track {
+  display: flex;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.defence-insights-card {
+  flex: 0 0 100%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(1, 151, 255, 0.1);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+.defence-insights-card:hover {
+  box-shadow: 0 12px 40px rgba(1, 151, 255, 0.15);
+}
+
+.defence-insights-image {
+  width: 100%;
+  height: 320px;
+  position: relative;
+}
+
+.defence-insights-badge {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  padding: 8px 16px;
+  border-radius: 50px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+}
+
+.defence-insights-badge-text {
+  font-family: var(--font-jakarta);
+  font-size: 12px;
+  font-weight: 600;
+  color: #0197ff;
+  text-transform: uppercase;
+}
+
+.defence-insights-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 32px 28px;
+}
+
+.defence-insights-text-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.defence-insights-date-inner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.defence-insights-date-text {
+  font-family: var(--font-dm-sans);
+  font-size: 16px;
+  color: #768498;
+}
+
+.defence-insights-text-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.defence-insights-card-title {
+  font-family: var(--font-jakarta);
+  font-size: 24px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0;
+  transition: color 0.3s ease;
+}
+
+.defence-insights-card:hover .defence-insights-card-title {
+  color: #0197ff;
+}
+
+.defence-insights-card-description {
+  font-family: var(--font-dm-sans);
+  font-size: 16px;
+  line-height: 1.6;
+  color: #5f6c7b;
+  margin: 0;
+}
+
+.defence-insights-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0;
+  background: none;
+  border: none;
+  font-family: var(--font-jakarta);
+  font-size: 15px;
+  font-weight: 600;
+  color: #0197ff;
+  cursor: pointer;
+  transition: gap 0.3s ease;
+}
+
+.defence-insights-cta:hover {
+  gap: 12px;
+}
+
+.defence-insights-slider-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.defence-insights-slider-controls {
+  display: flex;
+  gap: 16px;
+}
+
+.defence-insights-slider-btn {
+  padding: 10px 20px;
+  border-radius: 25px;
+  border: 1px solid rgba(1, 151, 255, 0.3);
+  background: rgba(255, 255, 255, 0.8);
+  font-family: var(--font-jakarta);
+  font-size: 14px;
+  font-weight: 600;
+  color: #0197ff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.defence-insights-slider-btn:hover {
+  background: #0197ff;
+  color: #ffffff;
+}
+
+.defence-insights-dots {
+  display: flex;
+  gap: 12px;
+}
+
+.defence-insights-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid rgba(1, 151, 255, 0.3);
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.defence-insights-dot.active {
+  background: #0197ff;
+  border-color: #0197ff;
+}
+
+.defence-insights-view-all {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  border-radius: 30px;
+  border: 2px solid #0197ff;
+  background: rgba(255, 255, 255, 0.8);
+  font-family: var(--font-jakarta);
+  font-size: 15px;
+  font-weight: 700;
+  color: #0197ff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.defence-insights-view-all:hover {
+  background: #0197ff;
+  color: #ffffff;
+}
+
+.defence-insights-view-all:hover svg path {
+  stroke: #ffffff;
+}
+
+/* Responsive Styles for Defence Insights Section */
+@media (max-width: 768px) {
+  .defence-insights-section {
+    padding: 40px 16px;
+  }
+}
+
+/* ============================================
+   Defence Work Impact Section
+   ============================================ */
+
+.defence-work-impact-section {
+  width: 100%;
+  padding: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(180deg, #fdfcfc 0%, #ffffff 50%, #fdfcfc 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.defence-work-impact-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 40% 50%, rgba(1, 151, 255, 0.02) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.defence-work-impact-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 60px;
+  width: 100%;
+  max-width: 1400px;
+  position: relative;
+  z-index: 1;
+}
+
+.defence-work-impact-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+}
+
+.defence-work-impact-title {
+  font-family: var(--font-jakarta);
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.5px;
+  text-align: center;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.defence-work-impact-title-highlight {
+  background: linear-gradient(135deg, #0197ff 0%, #00d4ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 800;
+}
+
+.defence-work-impact-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  width: 100%;
+}
+
+.defence-work-impact-item {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.defence-work-impact-bar {
+  width: 6px;
+  min-width: 6px;
+  align-self: stretch;
+  background: linear-gradient(180deg, #0197ff 0%, #00d4ff 100%);
+  border-radius: 8px 0 0 8px;
+}
+
+.defence-work-impact-card {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  border-radius: 0 8px 8px 0;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(1, 151, 255, 0.1);
+  border-left: none;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.defence-work-impact-item:hover {
+  transform: translateX(4px);
+}
+
+.defence-work-impact-item:hover .defence-work-impact-card {
+  box-shadow: 0 8px 32px rgba(1, 151, 255, 0.2);
+}
+
+.defence-work-impact-image {
+  width: 100%;
+  height: 280px;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.4s ease;
+}
+
+.defence-work-impact-item:hover .defence-work-impact-image {
+  transform: scale(1.05);
+}
+
+.defence-work-impact-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 32px 28px;
+}
+
+.defence-work-impact-text-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.defence-work-impact-card-title {
+  font-family: var(--font-jakarta);
+  font-size: 24px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0;
+  transition: color 0.3s ease;
+}
+
+.defence-work-impact-item:hover .defence-work-impact-card-title {
+  color: #0197ff;
+}
+
+.defence-work-impact-card-description {
+  font-family: var(--font-dm-sans);
+  font-size: 16px;
+  line-height: 1.6;
+  color: #5f6c7b;
+  margin: 0;
+}
+
+.defence-work-impact-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0;
+  background: none;
+  border: none;
+  font-family: var(--font-jakarta);
+  font-size: 15px;
+  font-weight: 600;
+  color: #0197ff;
+  cursor: pointer;
+  transition: gap 0.3s ease;
+}
+
+.defence-work-impact-cta:hover {
+  gap: 12px;
+}
+
+.defence-work-impact-cta svg {
+  transition: transform 0.3s ease;
+}
+
+.defence-work-impact-cta:hover svg {
+  transform: translateX(4px);
+}
+
+/* Responsive Styles for Defence Work Impact Section */
+@media (max-width: 899px) {
+  .defence-work-impact-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .defence-work-impact-section {
+    padding: 40px 16px;
+  }
+}
+
+@media (max-width: 479px) {
+  .defence-work-impact-section {
+    padding: 40px 16px;
+  }
+
+  .defence-work-impact-container {
+    gap: 28px;
+  }
+
+  .defence-work-impact-image {
+    height: 160px;
+  }
+
+  .defence-work-impact-content {
+    padding: 20px 16px;
+  }
+}
+
+/* ============================================
+   Defence FAQ Section
+   ============================================ */
+
+.defence-faq-section {
+  width: 100%;
+  padding: 100px 80px;
+  background: #ffffff;
+}
+
+.defence-faq-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.defence-faq-sidebar {
+  position: sticky;
+  top: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.defence-faq-title {
+  font-family: var(--font-jakarta);
+  font-size: 42px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.defence-faq-title-highlight {
+  background: linear-gradient(135deg, #0197ff 0%, #00d4ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.defence-faq-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 24px;
+}
+
+.defence-faq-contact-text {
+  font-family: var(--font-dm-sans);
+  font-size: 16px;
+  color: #5f6c7b;
+  margin: 0;
+}
+
+.defence-faq-contact-link {
+  font-family: var(--font-jakarta);
+  font-size: 15px;
+  font-weight: 600;
+  color: #0197ff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.defence-faq-contact-link:hover {
+  color: #0066cc;
+}
+
+.defence-faq-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.defence-faq-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.defence-faq-question-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+  padding: 24px 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.defence-faq-question-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.defence-faq-question {
+  font-family: var(--font-jakarta);
+  font-size: 18px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0;
+  transition: color 0.3s ease;
+}
+
+.defence-faq-question-wrapper:hover .defence-faq-question {
+  color: #0197ff;
+}
+
+.defence-faq-answer {
+  font-family: var(--font-dm-sans);
+  font-size: 16px;
+  line-height: 1.6;
+  color: #5f6c7b;
+  margin: 0;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.defence-faq-icon {
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.defence-faq-divider {
+  height: 1px;
+  background: rgba(0, 0, 0, 0.08);
+}
+
+/* Responsive Styles for FAQ Section */
+@media (max-width: 1024px) {
+  .defence-faq-section {
+    padding: 80px 40px;
+  }
+
+  .defence-faq-container {
+    gap: 60px;
+  }
+}
+
+@media (max-width: 768px) {
+  .defence-faq-section {
+    padding: 40px 16px;
+  }
+
+  .defence-faq-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .defence-faq-sidebar {
+    position: static;
+    gap: 24px;
+  }
+
+  .defence-faq-title {
+    font-size: 28px;
+  }
+
+  .defence-faq-contact {
+    padding: 20px;
+  }
+
+  .defence-faq-question-wrapper {
+    padding: 20px 0;
+    gap: 16px;
+  }
+
+  .defence-faq-question {
+    font-size: 16px;
+  }
+
+  .defence-faq-answer {
+    font-size: 16px;
+  }
+}
+
+
+
+/* ============================================
+   Defence Why Choose Us Section
+   ============================================ */
+
+.defence-why-choose-section {
+  position: relative;
+  width: 100%;
+  padding: 100px 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f9f9f9;
+}
+
+.defence-why-choose-container {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 1440px;
+}
+
+.defence-why-choose-title {
+  font-family: var(--font-jakarta);
+  font-size: 44px;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: 2%;
+  text-align: center;
+  color: #000000;
+  margin-bottom: 2rem;
+}
+
+.defence-why-choose-title-highlight {
+  position: relative;
+  background: linear-gradient(135deg, #0197ff 0%, #00d4ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 800;
+}
+
+.defence-why-choose-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto auto;
+  gap: 24px;
+  width: 100%;
+  align-items: start;
+}
+
+.defence-why-choose-card-large {
+  background: linear-gradient(135deg, rgba(191, 231, 255, 0.3) 0%, rgba(230, 245, 255, 0.6) 100%);
+  border-radius: 16px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  min-height: 350px;
+  transition: box-shadow 0.2s;
+  position: relative;
+  grid-column: 1;
+  grid-row: 1 / 3;
+}
+
+.defence-why-choose-card-large:hover {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.defence-why-choose-card-large .defence-why-choose-card-image-wrapper {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.defence-why-choose-card-large .defence-why-choose-card-image {
+  width: auto;
+  height: auto;
+  max-width: 500px;
+  max-height: 500px;
+}
+
+.defence-why-choose-image-national {
+  width: 700px !important;
+  height: auto !important;
+  max-width: 700px;
+  max-height: 700px;
+}
+
+.defence-why-choose-image-highstake {
+  width: 500px !important;
+  height: auto !important;
+  max-width: 500px;
+  max-height: 500px;
+}
+
+.defence-why-choose-image-outcome {
+  width: 180px !important;
+  height: auto !important;
+  max-width: 180px;
+  max-height: 180px;
+}
+
+.defence-why-choose-image-global {
+  width: 180px !important;
+  height: auto !important;
+  max-width: 180px;
+  max-height: 180px;
+}
+
+.defence-why-choose-image-security {
+  width: 180px !important;
+  height: auto !important;
+  max-width: 180px;
+  max-height: 180px;
+}
+
+.defence-why-choose-card-title {
+  font-family: var(--font-jakarta);
+  font-size: 20px;
+  font-weight: 700;
+  color: #000000;
+  margin-bottom: 8px;
+}
+
+.defence-why-choose-card-description {
+  font-family: var(--font-dm-sans);
+  font-size: 16px;
+  color: #000000;
+  line-height: 1.5;
+}
+
+
+.defence-why-choose-card-large .defence-why-choose-card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+.defence-why-choose-card-large-title {
+  font-family: var(--font-jakarta);
+  font-size: 24px;
+  font-weight: 700;
+  color: #000000;
+  margin-bottom: 12px;
+  display: none;
+}
+
+.defence-why-choose-card-large-text {
+  font-family: var(--font-dm-sans);
+  font-size: 16px;
+  color: #000000;
+  line-height: 1.5;
+  display: none;
+}
+
+.defence-why-choose-card-small {
+  background: linear-gradient(135deg, rgba(191, 231, 255, 0.3) 0%, rgba(230, 245, 255, 0.6) 100%);
+  border-radius: 16px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  min-height: 160px;
+  transition: box-shadow 0.2s;
+  position: relative;
+}
+
+.defence-why-choose-card-small:nth-child(2) {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.defence-why-choose-card-small:nth-child(3) {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+.defence-why-choose-card-small:nth-child(4) {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.defence-why-choose-card-small:nth-child(5) {
+  grid-column: 3;
+  grid-row: 2;
+}
+
+.defence-why-choose-card-small:hover {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.defence-why-choose-card-small .defence-why-choose-card-image-wrapper {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: auto;
+  height: auto;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  margin: 0;
+  z-index: 1;
+}
+
+.defence-why-choose-card-small .defence-why-choose-card-image {
+  width: auto;
+  height: auto;
+  max-width: 400px;
+  max-height: 400px;
+  object-fit: contain;
+}
+
+.defence-why-choose-card-small .defence-why-choose-card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 80%;
+  position: relative;
+  z-index: 2;
+}
+
+.defence-why-choose-card-small-title {
+  font-family: var(--font-jakarta);
+  font-size: 20px;
+  font-weight: 700;
+  color: #000000;
+  margin-bottom: 8px;
+  display: none;
+}
+
+.defence-why-choose-card-small-text {
+  font-family: var(--font-dm-sans);
+  font-size: 16px;
+  color: #5f6c7b;
+  line-height: 1.5;
+  display: none;
+}
+
+/* Responsive Styles for Defence Why Choose Us Section */
+@media (max-width: 1024px) {
+  .defence-why-choose-section {
+    padding: 80px 40px;
+  }
+
+  .defence-why-choose-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .defence-why-choose-card-large {
+    grid-column: span 2;
+    grid-row: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .defence-why-choose-section {
+    padding: 40px 16px;
+  }
+
+  .defence-why-choose-title {
+    font-size: 28px;
+    line-height: 1.3;
+    margin-bottom: 24px;
+  }
+
+  .defence-why-choose-grid {
+    grid-template-columns: 1fr !important;
+    grid-template-rows: auto;
+    gap: 16px;
+    display: grid;
+  }
+
+  .defence-why-choose-card-large,
+  .defence-why-choose-card-small {
+    grid-column: 1 / 2 !important;
+    grid-row: auto !important;
+    min-height: auto;
+    padding: 24px 20px;
+  }
+
+  .defence-why-choose-card-small:nth-child(2),
+  .defence-why-choose-card-small:nth-child(3),
+  .defence-why-choose-card-small:nth-child(4),
+  .defence-why-choose-card-small:nth-child(5) {
+    grid-column: 1 / 2 !important;
+    grid-row: auto !important;
+  }
+
+  .defence-why-choose-card-large .defence-why-choose-card-image-wrapper,
+  .defence-why-choose-card-small .defence-why-choose-card-image-wrapper {
+    display: none;
+  }
+
+  .defence-why-choose-card-large .defence-why-choose-card-image,
+  .defence-why-choose-card-small .defence-why-choose-card-image {
+    display: none;
+  }
+
+  .defence-why-choose-card-small .defence-why-choose-card-content {
+    width: 100%;
+  }
+
+  .defence-why-choose-card-title {
+    font-size: 18px;
+  }
+
+  .defence-why-choose-card-description {
+    font-size: 16px;
+  }
+
+  .defence-why-choose-image-national,
+  .defence-why-choose-image-highstake,
+  .defence-why-choose-image-outcome,
+  .defence-why-choose-image-global,
+  .defence-why-choose-image-security {
+    width: auto !important;
+    height: auto !important;
+    max-width: 200px !important;
+    max-height: 200px !important;
+  }
+}
+
+/* ============================================
+   Defence Research & Development Section
+   ============================================ */
+
+.defence-research-section {
+  width: 100%;
+  padding: 80px;
+  background: linear-gradient(180deg, #ffffff 0%, #fdfcfc 50%, #ffffff 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.defence-research-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 60px;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.defence-research-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+  width: 100%;
+}
+
+.defence-research-title {
+  font-family: var(--font-jakarta);
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.5px;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.defence-research-title-highlight {
+  background: linear-gradient(135deg, #0197ff 0%, #00d4ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 800;
+}
+
+.defence-research-subtitle {
+  font-family: var(--font-dm-sans);
+  font-size: 16px;
+  line-height: 1.6;
+  color: #5f6c7b;
+  margin: 0;
+  max-width: 800px;
+}
+
+.defence-research-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  width: 100%;
+}
+
+.defence-research-card {
+  position: relative;
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(191, 231, 255, 0.4) 0%, rgba(230, 245, 255, 0.5) 100%);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(1, 151, 255, 0.1);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  overflow: hidden;
+  transition: all 0.4s ease;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  min-height: 280px;
+  padding: 32px 28px;
+  gap: 32px;
+}
+
+.defence-research-card:hover {
+  box-shadow: 0 12px 40px rgba(1, 151, 255, 0.15);
+  transform: translateY(-4px);
+}
+
+.defence-research-card-wide {
+  grid-column: span 2;
+  min-height: 280px;
+}
+
+.defence-research-card-narrow {
+  grid-column: span 1;
+  min-height: 280px;
+}
+
+.defence-research-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+  position: relative;
+  z-index: 2;
+  min-width: 0;
+}
+
+.defence-research-card-title {
+  font-family: var(--font-jakarta);
+  font-size: 20px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.defence-research-card-description {
+  font-family: var(--font-dm-sans);
+  font-size: 16px;
+  line-height: 1.5;
+  color: #5f6c7b;
+  margin: 0;
+}
+
+.defence-research-card-image {
+  position: relative;
+  width: 200px;
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.defence-research-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.defence-research-card-fullbg {
+  background-size: cover;
+  background-position: center;
+  padding: 32px 28px;
+}
+
+.defence-research-card-fullbg .defence-research-card-content {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
+  border-radius: 8px;
+  padding: 24px;
+  margin-top: auto;
+}
+
+.defence-research-card-fullbg .defence-research-card-title,
+.defence-research-card-fullbg .defence-research-card-description {
+  color: #ffffff;
+}
+
+/* Responsive Styles for Defence Research Section */
+@media (max-width: 1024px) {
+  .defence-research-section {
+    padding: 80px 40px;
+  }
+
+  .defence-research-container {
+    gap: 48px;
+  }
+
+  .defence-research-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .defence-research-card-wide,
+  .defence-research-card-narrow {
+    grid-column: span 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .defence-research-section {
+    padding: 40px 16px;
+  }
+
+  .defence-research-container {
+    gap: 32px;
+  }
+
+  .defence-research-title {
+    font-size: 28px;
+  }
+
+  .defence-research-subtitle {
+    font-size: 16px;
+  }
+
+  .defence-research-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .defence-research-card {
+    flex-direction: column;
+    min-height: auto;
+    padding: 24px 20px;
+    gap: 16px;
+  }
+
+  .defence-research-card-wide,
+  .defence-research-card-narrow {
+    grid-column: span 1;
+  }
+
+  .defence-research-card-image {
+    display: none;
+  }
+
+  .defence-research-card-fullbg {
+    background-image: none !important;
+    background: linear-gradient(135deg, rgba(191, 231, 255, 0.4) 0%, rgba(230, 245, 255, 0.5) 100%);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(1, 151, 255, 0.1);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  }
+
+  .defence-research-card-fullbg .defence-research-card-content {
+    background: transparent;
+    padding: 0;
+  }
+
+  .defence-research-card-fullbg .defence-research-card-title,
+  .defence-research-card-fullbg .defence-research-card-description {
+    color: #1a1a1a;
+  }
+
+  .defence-research-card-title {
+    font-size: 18px;
+  }
+
+  .defence-research-card-description {
+    font-size: 16px;
+  }
+}
+
+
+/* ============================================
+   Defence Research & Development Section V2
+   (Bento Grid Style - Matching Industries)
+   ============================================ */
+
+.defence-research-section-v2 {
+  position: relative;
+  padding: 80px;
+  overflow: hidden;
+  background: var(--bg-primary);
+  color: var(--text-dark);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.defence-research-container-v2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 60px;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.defence-research-header-v2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+}
+
+.defence-research-title-v2 {
+  font-family: var(--font-jakarta);
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.5px;
+  text-align: center;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.defence-research-title-highlight-v2 {
+  position: relative;
+  background: linear-gradient(135deg, #0197ff 0%, #00d4ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 800;
+}
+
+/* Research Bento Grid */
+.defence-research-bento-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1.25rem;
+  width: 100%;
+}
+
+.defence-research-item {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 2rem;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+  text-decoration: none;
+  display: block;
+}
+
+.defence-research-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--accent-color) 0%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.defence-research-item:hover::before {
+  opacity: 0.06;
+}
+
+.defence-research-item:hover {
+  transform: translateY(-6px);
+  border-color: var(--accent-color);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+}
+
+/* Grid positioning */
+.defence-research-item.span-6 {
+  grid-column: span 6;
+}
+
+.defence-research-item.span-4 {
+  grid-column: span 4;
+}
+
+.defence-research-content-wrap {
+  position: relative;
+  z-index: 1;
+}
+
+.defence-research-number {
+  font-family: var(--font-dm-sans);
+  font-size: 0.7rem;
+  color: var(--accent-color);
+  margin-bottom: 1.25rem;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+}
+
+.defence-research-icon-box {
+  width: 50px;
+  height: 50px;
+  background: var(--accent-color);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+  transition: all 0.4s ease;
+}
+
+.defence-research-item:hover .defence-research-icon-box {
+  transform: rotate(8deg) scale(1.05);
+}
+
+.defence-research-icon-box svg {
+  width: 24px;
+  height: 24px;
+  stroke: white;
+  fill: none;
+  stroke-width: 2;
+}
+
+.defence-research-title-text {
+  font-family: var(--font-jakarta);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--text-dark);
+}
+
+.defence-research-desc-text {
+  font-family: var(--font-dm-sans);
+  font-size: 0.9375rem;
+  color: var(--text-gray);
+  line-height: 1.5;
+
+}
+
+.defence-research-action-link {
+  font-family: var(--font-dm-sans);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8125rem;
+  color: var(--accent-color);
+  text-decoration: none;
+  opacity: 0;
+  transform: translateX(-8px);
+  transition: all 0.4s ease;
+  font-weight: 700;
+}
+
+.defence-research-item:hover .defence-research-action-link {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.defence-research-action-link::after {
+  content: '→';
+  transition: transform 0.3s ease;
+}
+
+/* Tablet Layout */
+@media (max-width: 1024px) {
+  .defence-research-section-v2 {
+    padding: 70px 40px;
+  }
+
+  .defence-research-item.span-6,
+  .defence-research-item.span-4 {
+    grid-column: span 12;
+  }
+
+  .defence-research-item:nth-child(3),
+  .defence-research-item:nth-child(4),
+  .defence-research-item:nth-child(5) {
+    grid-column: span 6;
+  }
+}
+
+/* Mobile Layout */
+@media (max-width: 640px) {
+  .defence-research-section-v2 {
+    padding: 60px 16px;
+  }
+
+  .defence-research-bento-grid {
+    gap: 1rem;
+  }
+
+  .defence-research-item {
+    grid-column: span 12 !important;
+    padding: 1.5rem;
+  }
+
+  .defence-research-title-text {
+    font-size: 1.25rem;
+  }
+
+  .defence-research-desc-text {
+    font-size: 0.875rem;
+  }
+
+  .defence-research-action-link {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+
+/* ============================================
+   Defence Why Choose Us Section V2
+   (Bento Grid Style - Matching Main Site)
+   ============================================ */
+
+.defence-why-choose-section-v2 {
+  position: relative;
+  padding: 80px;
+  overflow: hidden;
+  background: var(--bg-primary);
+  color: var(--text-dark);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.defence-why-choose-container-v2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 60px;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .defence-why-choose-container-v2 {
+    padding: 60px 40px;
+  }
+}
+
+/* Header Section */
+.defence-why-choose-header-v2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+}
+
+.defence-why-choose-title-v2 {
+  font-family: var(--font-jakarta);
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.5px;
+  text-align: center;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.defence-why-choose-title-highlight-v2 {
+  position: relative;
+  background: linear-gradient(135deg, #0197ff 0%, #00d4ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 800;
+}
+
+/* Bento Grid */
+.defence-why-choose-grid-v2 {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-auto-rows: 1fr !important;
+  gap: 1.25rem;
+  width: 100%;
+  height: auto !important;
+}
+
+.defence-why-choose-item {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 2.5rem;
+  cursor: pointer;
+  position: relative;
+  overflow: visible;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+  text-decoration: none;
+  display: flex !important;
+  flex-direction: column;
+  height: auto !important;
+  min-height: auto !important;
+}
+
+.defence-why-choose-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--accent-color) 0%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  border-radius: inherit;
+}
+
+.defence-why-choose-item:hover::before {
+  opacity: 0.06;
+}
+
+.defence-why-choose-item:hover {
+  transform: translateY(-6px);
+  border-color: var(--accent-color);
+  box-shadow: 0 15px 40px rgba(1, 151, 255, 0.12);
+}
+
+/* Grid positioning */
+.defence-why-choose-item.span-6 {
+  grid-column: span 6;
+}
+
+.defence-why-choose-item.span-4 {
+  grid-column: span 4;
+}
+
+.defence-why-choose-content-wrap {
+  position: relative;
+  z-index: 1;
+}
+
+.defence-why-choose-number {
+  font-family: var(--font-dm-sans);
+  font-size: 0.7rem;
+  color: var(--accent-color);
+  margin-bottom: 1.25rem;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+}
+
+.defence-why-choose-icon-box {
+  width: 60px;
+  height: 60px;
+  background: var(--accent-color);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+  transition: all 0.5s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.defence-why-choose-item:hover .defence-why-choose-icon-box {
+  transform: rotate(10deg) scale(1.1);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.defence-why-choose-icon-box svg {
+  width: 30px;
+  height: 30px;
+  stroke: white;
+  fill: none;
+  stroke-width: 2;
+}
+
+.defence-why-choose-title-text {
+  font-family: var(--font-jakarta);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  color: #1a1a1a;
+}
+
+.defence-why-choose-desc-text {
+  font-family: var(--font-dm-sans);
+  font-size: 0.9375rem;
+  color: var(--text-gray);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.defence-why-choose-card-indicator {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  width: 40px;
+  height: 40px;
+  background: rgba(1, 151, 255, 0.1);
+  color: #0197ff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: translate(10px, -10px);
+  transition: all 0.4s ease;
+  z-index: 2;
+}
+
+.defence-why-choose-item:hover .defence-why-choose-card-indicator {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+/* Tablet Layout */
+@media (max-width: 1024px) {
+  .defence-why-choose-section-v2 {
+    padding: 0px;
+  }
+
+  .defence-why-choose-item.span-6,
+  .defence-why-choose-item.span-4 {
+    grid-column: span 12;
+  }
+}
+
+/* Mobile Layout */
+@media (max-width: 640px) {
+  .defence-why-choose-section-v2 {
+    padding: 60px 16px;
+  }
+
+  .defence-why-choose-grid-v2 {
+    gap: 1rem;
+  }
+
+  .defence-why-choose-item {
+    padding: 1.5rem;
+  }
+
+  .defence-why-choose-title-text {
+    font-size: 1.25rem;
+  }
+
+  .defence-why-choose-card-indicator {
+    top: 1.5rem;
+    right: 1.5rem;
+    width: 32px;
+    height: 32px;
+    opacity: 1;
+    transform: none;
+  }
+}

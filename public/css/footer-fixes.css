@@ -1,0 +1,70 @@
+/* ============================================
+   Footer Section - Mobile Fixes
+   ============================================ */
+
+@media (max-width: 768px) {
+    .sol9x-footer {
+        padding: 40px 20px !important;
+    }
+
+    .sol9x-footer-main {
+        gap: 40px !important;
+    }
+
+    /* Stack main content vertically */
+    .sol9x-footer-content {
+        flex-direction: column !important;
+        gap: 40px !important;
+        align-items: flex-start !important;
+    }
+
+    /* Stack links section vertically */
+    .sol9x-footer-links {
+        flex-direction: column !important;
+        width: 100% !important;
+        gap: 32px !important;
+    }
+
+    .sol9x-footer-link-group {
+        width: 100% !important;
+        align-items: flex-start !important;
+    }
+
+    .sol9x-footer-right {
+        width: 100% !important;
+        height: auto !important;
+        align-items: flex-start !important;
+        gap: 32px !important;
+    }
+
+    .sol9x-footer-certifications {
+        align-items: flex-start !important;
+        width: 100% !important;
+    }
+
+    .sol9x-footer-cert-title {
+        text-align: left !important;
+    }
+
+    .sol9x-footer-social {
+        justify-content: flex-start !important;
+        width: 100% !important;
+    }
+
+    /* Adjust newsletter section if present on page above footer */
+    .sol9x-footer-newsletter {
+        padding: 32px 20px !important;
+    }
+
+    .sol9x-footer-newsletter-content {
+        flex-direction: column !important;
+        gap: 24px !important;
+        text-align: center !important;
+    }
+
+    /* Copyright section */
+    .sol9x-footer-copyright {
+        flex-direction: column !important;
+        gap: 12px !important;
+    }
+}

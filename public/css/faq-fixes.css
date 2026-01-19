@@ -1,0 +1,43 @@
+/* ============================================
+   FAQ Section - Mobile Fixes
+   ============================================ */
+
+@media (max-width: 768px) {
+    .sol9x-faq-section {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        padding: 40px 20px !important;
+        gap: 32px !important;
+    }
+
+    .sol9x-faq-sidebar {
+        width: 100% !important;
+        max-width: 100% !important;
+        align-items: flex-start !important;
+        text-align: left !important;
+    }
+
+    .sol9x-faq-title {
+        font-size: 28px !important;
+        text-align: left !important;
+        margin-bottom: 8px !important;
+    }
+
+    .sol9x-faq-contact {
+        align-items: flex-start !important;
+    }
+
+    .sol9x-faq-list {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 0 !important;
+    }
+
+    .sol9x-faq-item {
+        width: 100% !important;
+    }
+
+    .sol9x-faq-question-wrapper {
+        padding: 16px 0 !important;
+    }
+}

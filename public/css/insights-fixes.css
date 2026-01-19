@@ -1,0 +1,40 @@
+/* ============================================
+   Insights Section - Mobile Fixes
+   ============================================ */
+
+/* Mobile Layout - Vertical Stack (Disable Slider) */
+@media (max-width: 768px) {
+    .sol9x-insights-track {
+        transform: none !important;
+        width: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 24px !important;
+    }
+
+    .sol9x-insights-card {
+        flex: 0 0 auto !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    /* Hide slider controls on mobile */
+    .sol9x-insights-slider-footer {
+        display: none !important;
+    }
+
+    /* Adjust Grid Container */
+    .sol9x-insights-grid {
+        height: auto !important;
+        overflow: visible !important;
+    }
+
+    /* Adjust padding for mobile */
+    .sol9x-insights-section {
+        padding: 40px 16px !important;
+    }
+
+    .sol9x-insights-container {
+        gap: 28px !important;
+    }
+}
