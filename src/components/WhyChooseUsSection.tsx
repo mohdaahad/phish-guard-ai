@@ -1,0 +1,1 @@
+export default function WhyChooseUsSection() { return <section className="py-20 px-20 max-md:px-4"><div className="max-w-[1400px] mx-auto text-center"><h2 className="font-jakarta text-[clamp(28px,4vw,48px)] font-bold">Why Choose <span className="text-gradient-brand">SOL9X</span></h2></div></section>; }
